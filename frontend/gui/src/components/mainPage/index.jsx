@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
-import ArticleList from "./ArticleList";
-import { StyledMainContent } from "./styles";
 
 export const Main = () => {
   const [searchValue, setSearchValue] = useState();
@@ -19,10 +16,6 @@ export const Main = () => {
   return (
     <React.Fragment>
       <Header callback={searchCallback} />
-      <StyledMainContent>
-        <Sidebar callback={themeCallback} />
-        <ArticleList searchValue={searchValue} sortingThemeIndex={sortingThemeIndex} />
-      </StyledMainContent>
     </React.Fragment>
   );
 };

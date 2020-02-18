@@ -1,193 +1,174 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.div`
-  height: 10vh;
-  min-height: 93.69px;
+export const StyledHeaderFirst = styled.div`
+  height: 50px;
+  width: 100%;
   background: #2b2b28;
   display: flex;
+  align-items: center;
+`;
+
+export const StyledHeaderSecond = styled.div`
+  height: 100px;
+  background: #fff;
+  display: flex;
+  border-bottom: 1px solid black;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const StyledHeaderLogo = styled.h1`
-  color: white;
-  font-size: 40px;
-  font-family: "Roboto";
+export const StyledHeaderFirstLinks = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 500px;
   margin-left: 100px;
+  font-family: "Montserrat", sans-serif;
 
   a {
     text-decoration: none;
     color: white;
   }
 
-  &:hover {
-    cursor: pointer;
+  a:hover {
+    font-weight: 600;
   }
 `;
 
-export const StyledHeaderFunctions = styled.div`
+export const StyledHeaderFirstSocials = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 6vh;
+  align-items: center;
+  height: 50px;
+  width: 200px;
+  margin-left: 690px;
 `;
 
-export const StyledHeaderSearchInput = styled.input`
-  width: 140px;
-  height: 6vh;
-  min-height: 56.22px;
-  border: none;
+export const StyledHeaderFirstLoginButton = styled.button`
+  width: 100px;
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 25px;
-  margin-right: 20px;
-  background: #fff;
-  transition: all 0.3s ease-out;
-  padding-left: 20px;
-  padding-right: 62px;
-  font-style: ${props => !props.value && "italic"};
+  background: #2b2b28;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  margin-left: 100px;
 
-  &:focus {
-    width: 300px;
-    outline: none;
+  &:hover {
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 1);
   }
 `;
 
-export const StyledHeaderSearch = styled.div`
-  display: flex;
-  align-items: center;
+export const StyledHeaderFirstVerticalLine = styled.div`
+  width: 2px;
+  height: 35px;
+  background-color: white;
+  opacity: 0.8;
+  margin-left: 30px;
 `;
 
-export const StyledNoArticlesFound = styled.div`
+export const StyledHeaderFirstCurrentDay = styled.p`
+  color: white;
   font-size: 30px;
-  font-family: "Roboto";
-  margin-top: 30px;
+  margin-left: 30px;
+  font-family: "Montserrat", sans-serif;
+  cursor: default;
+`;
+
+export const StyledHeaderFirstMonthAndDate = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  height: 50px;
+  font-family: "Montserrat", sans-serif;
+`;
+
+export const StyledHeaderFirstCurrentMonth = styled.p`
+  color: white;
+  text-transform: uppercase;
+  font-size: 15px;
+  cursor: default;
+`;
+
+export const StyledHeaderFirstCurrentYear = styled.p`
+  color: white;
+  font-size: 12px;
+  cursor: default;
+`;
+
+export const StyledSocialIcon = styled.img`
+  width: 24px;
+  filter: invert(100%);
+`;
+
+export const StyledHeaderSecondThemesWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
+  position: absolute;
+`;
+
+export const StyledHeaderSecondThemes = styled.div`
   display: flex;
-  justify-content: center;
-`;
-
-export const StyledSearchIcon = styled.img`
-  width: 24px;
-  position: relative;
-  right: 85px;
-  margin-left: 25px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-export const StyledHeaderAuthenticateIcon = styled.img`
-  width: 30px;
-  margin-right: 100px;
-  -webkit-filter: invert(100%);
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-export const StyledSidebar = styled.div`
-  min-width: 100px;
-  border-right: 1px solid #d9cfce;
-  align-self: flex-start;
-`;
-
-const HoveredThemeColor = [
-  "#f58c8d",
-  "#fcd383",
-  "#7b8b96",
-  "#ffb091",
-  "#bed9fa"
-];
-
-export const StyledSidebarElement = styled.div`
-  border-bottom: 1px solid #d9cfce;
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 30px 0;
-  background: #f8f8f8;
-  transition: all 0.2s ease-out;
+  height: 50px;
+  width: 700px;
+  font-family: "Montserrat", sans-serif;
+`;
+
+export const StyledHeaderSecondTheme = styled.p`
+  color: #2b2b28;
+  text-transform: uppercase;
 
   &:hover {
-    background: ${props => HoveredThemeColor[props.index]};
+    font-weight: 600;
     cursor: pointer;
+
+    img {
+      opacity: 1;
+    }
   }
 `;
 
-export const StyledThemeIcon = styled.img`
-  width: 40px;
-`;
-
-export const StyledArticlePreviewBlock = styled.div`
-  max-width: 800px;
-  margin: 40px 0;
-  margin-right: 40px;
-  font-family: "Roboto";
+export const StyledHeaderSecondThemeMore = styled.img`
+  width: 14px;
+  margin-left: 2px;
   position: relative;
+  top: 1px;
+  opacity: 0.8;
 `;
 
-export const StyledPreviewImage = styled.img`
-  max-width: 400px;
-
-  &:hover {
-    cursor: pointer;
-  }
+export const StyledHeaderSecondLogo = styled.div`
+  height: 70px;
+  width: 250px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  margin-left: 100px;
+  display: none;
 `;
 
-export const StyledPreviewInfo = styled.div`
+export const StyledHeaderSecondFunctions = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  font-size: 14px;
-  opacity: 0.7;
-`;
+  height: 100px;
+  width: 150px;
+  right: 100px;
+  position: absolute;
 
-export const StyledPreviewContent = styled.div`
-  padding-left: 6%;
-  padding-right: 6%;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  border: 1px solid #d9cfce;
-  border-top: none;
-  position: relative;
-  bottom: 5px;
-  background: #f8f8f8;
-`;
+  img {
+    width: 24px;
+    opacity: 0.5;
 
-export const StyledPreviewDate = styled.p`
-  margin-right: 40px;
-`;
-
-export const StyledPreviewTitle = styled.h2`
-  margin-bottom: 30px;
-  max-width: 340px;
-
-  a {
-    text-decoration: none;
-    color: black;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
   }
-
-  &:hover a {
-    cursor: pointer;
-    color: red;
-  }
-`;
-
-export const StyledPreviewStarter = styled.p`
-  max-width: 340px;
-`;
-
-export const StyledMainContent = styled.div`
-  display: flex;
-`;
-
-export const StyledPreviewIcon = styled.img`
-  width: 24px;
-  margin-right: 10px;
-`;
-
-export const StyledArticlePreviewList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 40px;
 `;
