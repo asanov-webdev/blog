@@ -1,0 +1,39 @@
+.editing-text {
+  font-size: 22px;
+  width: 780px;
+  font-family: "PT Serif", serif;
+  word-break: break-word;
+  border: none;
+  overflow: visible;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
+}
+
+.editing-title {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2em;
+  width: 1000px;
+}
+
+.image-big {
+  width: 780px;
+}
+
+.image-small {
+  width: 400px;
+}
+
+.image-tiny {
+  width: 100px;
+}
+
+.underlined-text {
+  text-decoration: underline;
+}
