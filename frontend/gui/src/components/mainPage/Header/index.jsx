@@ -1,6 +1,6 @@
 import React from "react";
-import { FirstHeader } from "./Header/FirstHeader/FirstHeader";
-import { SecondHeader } from "./Header/SecondHeader/SecondHeader";
+import { FirstHeader } from "./FirstHeader/FirstHeader";
+import { SecondHeader } from "./SecondHeader/SecondHeader";
 
 export const Header = () => {
   return (

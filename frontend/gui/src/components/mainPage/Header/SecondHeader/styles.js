@@ -4,7 +4,6 @@ export const StyledSecondHeader = styled.div`
   height: 100px;
   background: #fff;
   display: flex;
-  border-bottom: 1px solid black;
   justify-content: space-between;
   align-items: center;
 `;

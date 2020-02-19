@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import Slider from './Slider';
+import Header from "./Header/index";
+import ArticleSlider from "./ArticleSlider/index";
 
 export const Main = () => {
-
   return (
     <React.Fragment>
-      <Header/>
-      <Slider/>
+      <Header />
+      <ArticleSlider />
     </React.Fragment>
   );
 };
