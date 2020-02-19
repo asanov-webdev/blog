@@ -33,19 +33,19 @@ export const ArticleSlider = () => {
         <Article {...article} />
       ))} */}
       <div>
-        <img src={one} />
+        <img className='slide-img' src={one} />
         <p className='slide-p'>Test123</p>
       </div>
       <div>
-        <img src={two} />
+        <img className='slide-img' src={two} />
         <p>2</p>
       </div>
       <div>
-        <img src={three} />
+        <img className='slide-img' src={three} />
         <p>3</p>
       </div>
       <div>
-        <img src={four} />
+        <img className='slide-img' src={four} />
         <p>4</p>
       </div>
     </Carousel>

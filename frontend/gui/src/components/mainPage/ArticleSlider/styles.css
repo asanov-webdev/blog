@@ -1,5 +1,11 @@
 .carousel {
-  height: 856px;
+  height: 700px;
+}
+
+.carousel .slide {
+  background: #fff;
+  border-radius: 0px 25px 0px 0px;
+  height: 700px;
 }
 
 .slide-p {
@@ -7,5 +13,12 @@
   color: white;
   font-family: "Montserrat";
   position: relative;
-  bottom: 300px;
+  bottom: 370px;
+}
+
+.slide-img {
+  margin-left: 20px;
+  border-radius: 25px;
+  width: 1500px !important;
+  height: 700px;
 }
