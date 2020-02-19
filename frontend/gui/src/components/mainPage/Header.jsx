@@ -23,16 +23,15 @@ import facebook from "../../assets/svg/social/facebook.svg";
 import twitter from "../../assets/svg/social/twitter.svg";
 import instagram from "../../assets/svg/social/instagram.svg";
 import vk from "../../assets/svg/social/vk.svg";
-import more from "../../assets/svg/more.svg";
+import pinterest from "../../assets/svg/social/pinterest.svg";
 import bookmark from "../../assets/svg/bookmark.svg";
 import search from "../../assets/svg/search.svg";
 import share from "../../assets/svg/share.svg";
+import bolt from "../../assets/svg/bolt.svg";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-export const Header = props => {
-  const [searchValue, setSearchValue] = useState();
-
+export const Header = () => {
   const themes = ["home", "gaming", "movies", "music", "thoughts"];
 
   return (
@@ -56,6 +55,9 @@ export const Header = props => {
           </a>
           <a href="#">
             <StyledSocialIcon src={vk} />
+          </a>
+          <a href="#">
+            <StyledSocialIcon src={pinterest} />
           </a>
         </StyledHeaderFirstSocials>
         <Link to="/">
@@ -82,13 +84,14 @@ export const Header = props => {
               <StyledHeaderSecondTheme>
                 {theme}
                 {index !== themes.length - 1 && (
-                  <StyledHeaderSecondThemeMore src={more} />
+                  <StyledHeaderSecondThemeMore>⋮</StyledHeaderSecondThemeMore>
                 )}
               </StyledHeaderSecondTheme>
             ))}
           </StyledHeaderSecondThemes>
         </StyledHeaderSecondThemesWrapper>
         <StyledHeaderSecondFunctions>
+          <img src={bolt} />
           <img src={search} />
           <img src={share} />
           <img src={bookmark} />

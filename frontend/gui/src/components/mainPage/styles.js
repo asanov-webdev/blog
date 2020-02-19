@@ -29,10 +29,11 @@ export const StyledHeaderFirstLinks = styled.div`
   a {
     text-decoration: none;
     color: white;
+    transition: 0.3s color ease-in-out;
   }
 
   a:hover {
-    font-weight: 600;
+    color: #b1b1a4;
   }
 `;
 
@@ -48,18 +49,19 @@ export const StyledHeaderFirstSocials = styled.div`
 export const StyledHeaderFirstLoginButton = styled.button`
   width: 100px;
   height: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid white;
   border-radius: 25px;
   background: #2b2b28;
   color: white;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   margin-left: 100px;
+  transition: 0.3s all ease-in-out;
 
   &:hover {
-    font-weight: 600;
+    color: #b1b1a4;
     cursor: pointer;
-    border: 2px solid rgba(255, 255, 255, 1);
+    border: 2px solid #b1b1a4;
   }
 `;
 
@@ -104,6 +106,11 @@ export const StyledHeaderFirstCurrentYear = styled.p`
 export const StyledSocialIcon = styled.img`
   width: 24px;
   filter: invert(100%);
+  transition: 0.3s filter ease-in-out;
+
+  &:hover {
+    filter: invert(69.5%);
+  }
 `;
 
 export const StyledHeaderSecondThemesWrapper = styled.div`
@@ -125,23 +132,21 @@ export const StyledHeaderSecondThemes = styled.div`
 export const StyledHeaderSecondTheme = styled.p`
   color: #2b2b28;
   text-transform: uppercase;
+  font-weight: normal;
+  transition: 0.3s text-shadow ease-in-out;
 
   &:hover {
-    font-weight: 600;
+    text-shadow: 0.4px 0.4px black;
     cursor: pointer;
-
-    img {
-      opacity: 1;
-    }
   }
 `;
 
-export const StyledHeaderSecondThemeMore = styled.img`
+export const StyledHeaderSecondThemeMore = styled.span`
   width: 14px;
   margin-left: 2px;
   position: relative;
-  top: 1px;
-  opacity: 0.8;
+  color: #000;
+  bottom: 0.5px;
 `;
 
 export const StyledHeaderSecondLogo = styled.div`
@@ -165,6 +170,7 @@ export const StyledHeaderSecondFunctions = styled.div`
   img {
     width: 24px;
     opacity: 0.5;
+    transition: 0.3s opacity ease-in-out;
 
     &:hover {
       cursor: pointer;
