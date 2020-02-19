@@ -51,3 +51,10 @@ export async function addImage(formData) {
     .then(response => response.data);
   return data;
 }
+
+export async function fetchLatestArticles() {
+  const data = await axios
+    .get("/articles/")
+    .then(response => response.data.filter(article => article.publish_date));
+  return data;
+}
