@@ -8,6 +8,9 @@ import one from "../../../assets/1.jpg";
 import two from "../../../assets/2.jpg";
 import three from "../../../assets/3.jpg";
 import four from "../../../assets/4.jpg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export const ArticleSlider = () => {
   const [articles, setArticles] = useState([]);
@@ -16,40 +19,66 @@ export const ArticleSlider = () => {
     fetchLatestArticles().then(response => setArticles(response));
   }, []);
 
+  const settings = {
+    dots: true,
+    infinite: false,
+    // variableWidth: false,
+    outerEdgeLimit: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    initialSlide: 0.175
+  };
+
   return (
-    <Carousel
-      showArrows={false}
-      showStatus={false}
-      showIndicators={false}
-      showThumbs={false}
-      swipeScrollTolerance={10}
-      useKeyboardArrows
-      infiniteLoop
-      emulateTouch
-      centerMode
-      className="carousel"
-    >
-      {/* {articles.map(article => (
-        <Article {...article} />
-      ))} */}
-      <div>
-        <img className='slide-img' src={one} />
-        <p className='slide-p'>Test123</p>
+    <Slider {...settings} className='my-slider'>
+      <div className='slide-div'>
+        <img className="slide-img" src={one} />
       </div>
-      <div>
-        <img className='slide-img' src={two} />
-        <p>2</p>
+      <div className='slide-div'>
+        <img className="slide-img" src={two} />
       </div>
-      <div>
-        <img className='slide-img' src={three} />
-        <p>3</p>
+      <div className='slide-div'>
+        <img className="slide-img" src={three} />
       </div>
-      <div>
-        <img className='slide-img' src={four} />
-        <p>4</p>
+      <div className='slide-div'>
+        <img className="slide-img" src={four} />
       </div>
-    </Carousel>
+    </Slider>
   );
+
+  // return (
+  //   <Carousel
+  //     showArrows={false}
+  //     showStatus={false}
+  //     showIndicators={false}
+  //     showThumbs={false}
+  //     swipeScrollTolerance={10}
+  //     useKeyboardArrows
+  //     infiniteLoop
+  //     emulateTouch
+  //     centerMode
+  //     className="carousel"
+  //   >
+  //     <div>
+  //       <img className='slide-img' src={one} />
+  //       <p className='slide-p'>Test123</p>
+  //     </div>
+  //     <div>
+  //       <img className='slide-img' src={two} />
+  //       <p>2</p>
+  //     </div>
+  //     <div>
+  //       <img className='slide-img' src={three} />
+  //       <p>3</p>
+  //     </div>
+  //     <div>
+  //       <img className='slide-img' src={four} />
+  //       <p>4</p>
+  //     </div>
+  //   </Carousel>
+  // );
 };
 
 export default ArticleSlider;
