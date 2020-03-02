@@ -52,9 +52,17 @@ export async function addImage(formData) {
   return data;
 }
 
-export async function fetchLatestArticles() {
-  const data = await axios
+export async function fetchLatestArticlesPreviews() {
+  const articles = await axios
     .get("/articles/")
     .then(response => response.data.filter(article => article.publish_date));
-  return data;
+  const articleIDs = articles.map(article => article.id);
+  const mainImages = await axios
+    .get("/articles/images/")
+    .then(response =>
+      response.data.filter(
+        image => image.is_main && articleIDs.includes(image.article)
+      )
+    );
+  return [articles, mainImages];
 }

@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { fetchLatestArticles } from "../../../api";
-import Article from "./Article";
+import { fetchLatestArticlesPreviews } from "../../../api";
+import ArticleSlide from "./ArticleSlide";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./styles.css";
-import one from "../../../assets/1.jpg";
-import two from "../../../assets/2.jpg";
-import three from "../../../assets/3.jpg";
-import four from "../../../assets/4.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+const themes = {
+  LI: "LITERATURE",
+  FI: "FILMS",
+  GA: "GAMES",
+  MU: "MUSIC",
+  NE: "NEWS"
+};
+
 export const ArticleSlider = () => {
   const [articles, setArticles] = useState([]);
+  const [mainImages, setMainImages] = useState([]);
 
   useEffect(() => {
-    fetchLatestArticles().then(response => setArticles(response));
+    fetchLatestArticlesPreviews().then(response => {
+      setArticles(response[0]);
+      setMainImages(response[1]);
+    });
   }, []);
 
   const settings = {
@@ -27,21 +35,23 @@ export const ArticleSlider = () => {
     speed: 600
   };
 
-  return (
+  return mainImages[0] === undefined ? (
+    <p>loading...</p>
+  ) : (
     <div className="container">
       <Slider {...settings}>
-        <div className="slide-div">
-          <img className="slide-img" src={one} />
-        </div>
-        <div className="slide-div">
-          <img className="slide-img" src={two} />
-        </div>
-        <div className="slide-div">
-          <img className="slide-img" src={three} />
-        </div>
-        <div className="slide-div">
-          <img className="slide-img" src={four} />
-        </div>
+        {articles.map(article => (
+          <ArticleSlide
+            image={mainImages
+              .find(image => image.article === article.id)
+              .image_file.replace("media", "static")}
+            theme={themes[article.theme]}
+            title={article.title}
+            views_amount={article.views_amount}
+            reading_time={article.reading_time}
+            publish_date={article.publish_date}
+          />
+        ))}
       </Slider>
     </div>
   );

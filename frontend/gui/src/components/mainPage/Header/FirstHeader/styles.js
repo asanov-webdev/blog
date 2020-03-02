@@ -16,6 +16,7 @@ export const StyledLinks = styled.div`
   width: 500px;
   margin-left: 100px;
   font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 
   a {
     text-decoration: none;
@@ -58,6 +59,7 @@ export const StyledLoginButton = styled.button`
   text-transform: uppercase;
   margin-left: 100px;
   transition: 0.3s all ease-in-out;
+  font-weight: 500;
 
   &:hover {
     color: #b1b1a4;

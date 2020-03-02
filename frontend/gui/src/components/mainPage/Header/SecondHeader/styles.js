@@ -36,11 +36,13 @@ export const StyledThemes = styled.div`
 export const StyledTheme = styled.p`
   color: #2b2b28;
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: 600;
+  opacity: 0.9;
   transition: 0.3s text-shadow ease-in-out;
 
   &:hover {
     text-shadow: 0.4px 0.4px black;
+    opacity: 1;
     cursor: pointer;
   }
 `;

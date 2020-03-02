@@ -5,16 +5,6 @@
   background: #fff;
 }
 
-.slide-img {
-  height: 500px;
-  border-radius: 25px;
-}
-
-.slide-div {
-  background: #fff;
-  width: 50% !important;
-}
-
 .slide-div:focus {
   outline: none !important;
 }
