@@ -6,7 +6,7 @@ import {
   StyledThemes,
   StyledTheme,
   StyledThemeMore,
-  StyledFunctions
+  StyledFunctions,
 } from "./styles";
 import styles from "./styles.css";
 import bolt from "../../../../assets/svg/bolt.svg";
@@ -14,8 +14,8 @@ import search from "../../../../assets/svg/search.svg";
 import share from "../../../../assets/svg/share.svg";
 import bookmark from "../../../../assets/svg/bookmark.svg";
 
-export const SecondHeader = () => {
-  const themes = ["home", "gaming", "movies", "music", "thoughts"];
+export const SecondHeader = (props) => {
+  const themes = ["games", "films", "music", "literature", "news"];
 
   return (
     <StyledSecondHeader>
@@ -23,7 +23,13 @@ export const SecondHeader = () => {
       <StyledThemesWrapper>
         <StyledThemes>
           {themes.map((theme, index) => (
-            <StyledTheme>
+            <StyledTheme
+              onClick={() => {
+                console.log(props);
+                console.log(theme.slice(0, 2).toUpperCase());
+                props.callback(theme.slice(0, 2).toUpperCase());
+              }}
+            >
               {theme}
               {index !== themes.length - 1 && (
                 <StyledThemeMore>⋮</StyledThemeMore>

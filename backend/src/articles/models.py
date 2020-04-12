@@ -35,5 +35,5 @@ class ArticleImage(models.Model):
     article = models.name = models.ForeignKey(
         'Article', related_name='article', on_delete=models.CASCADE, blank=True, null=True)
     image_file = models.ImageField()
-    is_main = models.BooleanField(default='false')
+    is_main = models.BooleanField(default=True)
     brightness = models.PositiveSmallIntegerField(default=100)

@@ -2,11 +2,11 @@ import React from "react";
 import { FirstHeader } from "./FirstHeader/FirstHeader";
 import { SecondHeader } from "./SecondHeader/SecondHeader";
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <React.Fragment>
       <FirstHeader />
-      <SecondHeader />
+      <SecondHeader callback={props.callback} />
     </React.Fragment>
   );
 };

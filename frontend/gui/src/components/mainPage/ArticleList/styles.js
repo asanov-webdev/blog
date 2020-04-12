@@ -1,50 +1,50 @@
 import styled from "styled-components";
 
-export const StyledArticleSlide = styled.div`
+export const StyledArticleCard = styled.div`
   background: #fff;
-  width: 90% !important;
+  margin-left: 20px;
 
   a {
     text-decoration: none;
   }
 `;
 
-export const StyledArticleSlideImg = styled.img`
-  height: 500px;
-  border-radius: 25px;
+export const StyledArticleCardImg = styled.img`
+  height: 244px;
+  border-radius: 10px;
   filter: ${(props) => `brightness(${props.brightness}%)`};
 `;
 
-export const StyledArticleSlideTheme = styled.p`
+export const StyledArticleCardTheme = styled.p`
   text-transform: uppercase;
   color: #ffc46b;
   text-shadow: 2px 2px 4px black;
   font-family: "Montserrat", sans-serif;
   position: relative;
-  bottom: 220px;
+  bottom: 120px;
   left: 60px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
 `;
 
-export const StyledArticleSlideTitle = styled.p`
+export const StyledArticleCardTitle = styled.p`
   color: white;
   text-shadow: 2px 2px 4px black;
   font-family: "Montserrat", sans-serif;
   position: relative;
-  bottom: 200px;
+  bottom: 110px;
   left: 60px;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
 `;
 
-export const StyledArticleSlideInfo = styled.div`
+export const StyledArticleCardInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 300px;
   position: relative;
-  bottom: 180px;
+  bottom: 100px;
   left: 60px;
   color: #cbcccb;
   font-family: "Montserrat", sans-serif;
@@ -61,7 +61,7 @@ export const StyledArticleSlideInfo = styled.div`
     }
 
     p {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 `;

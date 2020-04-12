@@ -1,17 +1,17 @@
 import React from "react";
 import {
-  StyledArticleSlide,
-  StyledArticleSlideImg,
-  StyledArticleSlideTheme,
-  StyledArticleSlideTitle,
-  StyledArticleSlideInfo,
+  StyledArticleCard,
+  StyledArticleCardImg,
+  StyledArticleCardTheme,
+  StyledArticleCardTitle,
+  StyledArticleCardInfo,
 } from "./styles";
 import moment from "moment";
 import watched from "../../../assets/svg/watched.svg";
 import clock from "../../../assets/svg/clock.svg";
 import { Link } from "react-router-dom";
 
-export const ArticleSlide = (props) => {
+export const ArticleCard = (props) => {
   const {
     id,
     image,
@@ -24,13 +24,13 @@ export const ArticleSlide = (props) => {
   } = props;
 
   return (
-    <StyledArticleSlide>
-      <StyledArticleSlideImg src={image} brightness={brightness} />
-      <StyledArticleSlideTheme>{theme}</StyledArticleSlideTheme>
+    <StyledArticleCard>
+      <StyledArticleCardImg src={image} brightness={brightness} />
+      <StyledArticleCardTheme>{theme}</StyledArticleCardTheme>
       <Link to={`/articles/${id}`}>
-        <StyledArticleSlideTitle>{title}</StyledArticleSlideTitle>
+        <StyledArticleCardTitle>{title}</StyledArticleCardTitle>
       </Link>
-      <StyledArticleSlideInfo>
+      <StyledArticleCardInfo>
         <div>
           <p>
             {moment(
@@ -47,9 +47,9 @@ export const ArticleSlide = (props) => {
           <img src={watched} />
           <p>{views_amount}</p>
         </div>
-      </StyledArticleSlideInfo>
-    </StyledArticleSlide>
+      </StyledArticleCardInfo>
+    </StyledArticleCard>
   );
 };
 
-export default ArticleSlide;
+export default ArticleCard;

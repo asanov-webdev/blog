@@ -1,0 +1,7 @@
+.list-block {
+  margin-top: 100px;
+  margin-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}

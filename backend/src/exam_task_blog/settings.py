@@ -83,8 +83,8 @@ WSGI_APPLICATION = 'exam_task_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'exam_task_blog',
-        'USER': 'arthur_asanov',
+        'NAME': 'blog',
+        'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
