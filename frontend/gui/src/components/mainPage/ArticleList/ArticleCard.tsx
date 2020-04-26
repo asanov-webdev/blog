@@ -10,8 +10,9 @@ import moment from "moment";
 import watched from "../../../assets/svg/watched.svg";
 import clock from "../../../assets/svg/clock.svg";
 import { Link } from "react-router-dom";
+import { ArticleCardProps } from "../../../shared/types";
 
-export const ArticleCard = (props) => {
+export const ArticleCard = (props: ArticleCardProps) => {
   const {
     id,
     image,

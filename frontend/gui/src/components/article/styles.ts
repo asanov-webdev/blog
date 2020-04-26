@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import {
+  StyledArticleHeaderImagerProps,
+  StyledArticleContentWrapperProps,
+} from "../../shared/types";
 
 export const StyledArticleHeaderImageWrapper = styled.div`
   height: 100vh;
@@ -15,7 +19,8 @@ export const StyledArticleHeaderImageWrapper = styled.div`
 
 export const StyledArticleHeaderImage = styled.img`
   max-width: 100%;
-  filter: ${props => `brightness(${props.brightness}%)`};
+  filter: ${(props: StyledArticleHeaderImagerProps) =>
+    `brightness(${props.brightness}%)`};
 `;
 
 export const StyledArticleHeaderTextWrapper = styled.div`
@@ -59,9 +64,10 @@ export const StyledArticleContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: ${props => (props.editor ? "relative" : "absolute")};
-  top: ${props => (props.editor ? "100px" : "1050px")};
   width: 100%;
+  position: ${(props: StyledArticleContentWrapperProps) =>
+    props.editor ? "relative" : "absolute"};
+  top: ${(props) => (props.editor ? "100px" : "1050px")};
 `;
 
 export const StyledArticleContentText = styled.p`

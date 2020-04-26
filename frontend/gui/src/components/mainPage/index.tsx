@@ -3,19 +3,19 @@ import { fetchLatestArticlesPreviews } from "../../api";
 import Header from "./Header/index";
 import ArticleSlider from "./ArticleSlider/index";
 import ArticleList from "./ArticleList/index";
+import { DBArticle, DBArticleImage } from "../../shared/types";
 
 export const Main = () => {
-  const [articles, setArticles] = useState([]);
-  const [mainImages, setMainImages] = useState([]);
+  const [articles, setArticles] = useState<Array<DBArticle>>([]);
+  const [mainImages, setMainImages] = useState<Array<DBArticleImage>>([]);
   const [filter, setFilter] = useState("LI");
 
-  const filterCallback = (filterValue) => setFilter(filterValue);
+  const filterCallback = (filterValue: string) => setFilter(filterValue);
 
   useEffect(() => {
     fetchLatestArticlesPreviews().then((response) => {
       setArticles(response[0]);
       setMainImages(response[1]);
-      console.log(response[0][0].theme);
     });
   }, []);
 

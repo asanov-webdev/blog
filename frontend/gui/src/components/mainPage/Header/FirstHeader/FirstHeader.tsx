@@ -9,9 +9,9 @@ import {
   StyledCurrentDay,
   StyledMonthAndDate,
   StyledCurrentMonth,
-  StyledCurrentYear
+  StyledCurrentYear,
 } from "./styles";
-import styles from "./styles.css";
+import "./styles.css";
 import facebook from "../../../../assets/svg/social/facebook.svg";
 import twitter from "../../../../assets/svg/social/twitter.svg";
 import instagram from "../../../../assets/svg/social/instagram.svg";

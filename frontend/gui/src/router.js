@@ -1,9 +1,9 @@
 import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { Main } from "./components/mainPage/";
-import { Article } from "./components/article/";
-import { ArticleEditor } from "./components/articleEditor/";
+import { Main } from "./components/mainPage";
+import { Article } from "./components/article";
+import { ArticleEditor } from "./components/articleEditor";
 
 const history = createBrowserHistory();
 

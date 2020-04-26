@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledArticleCardImgProps } from "../../../shared/types";
 
 export const StyledArticleCard = styled.div`
   background: #fff;
@@ -12,7 +13,8 @@ export const StyledArticleCard = styled.div`
 export const StyledArticleCardImg = styled.img`
   height: 244px;
   border-radius: 10px;
-  filter: ${(props) => `brightness(${props.brightness}%)`};
+  filter: ${(props: StyledArticleCardImgProps) =>
+    `brightness(${props.brightness}%)`};
 `;
 
 export const StyledArticleCardTheme = styled.p`

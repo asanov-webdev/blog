@@ -8,13 +8,14 @@ import {
   StyledThemeMore,
   StyledFunctions,
 } from "./styles";
-import styles from "./styles.css";
+import "./styles.css";
 import bolt from "../../../../assets/svg/bolt.svg";
 import search from "../../../../assets/svg/search.svg";
 import share from "../../../../assets/svg/share.svg";
 import bookmark from "../../../../assets/svg/bookmark.svg";
+import { SecondHeaderProps } from "../../../../shared/types";
 
-export const SecondHeader = (props) => {
+export const SecondHeader = (props: SecondHeaderProps) => {
   const themes = ["games", "films", "music", "literature", "news"];
 
   return (

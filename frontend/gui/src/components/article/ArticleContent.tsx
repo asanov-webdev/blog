@@ -1,12 +1,13 @@
 import React from "react";
 import {
   StyledArticleContentWrapper,
-  StyledArticleContentText
+  StyledArticleContentText,
 } from "./styles";
 import ReactMarkdown from "react-markdown/with-html";
+import { ArticleProps } from "../../shared/types";
 
-export const ArticleContent = props => {
-  const { article, articleImages } = props;
+export const ArticleContent = (props: ArticleProps) => {
+  const { article } = props;
 
   return (
     <StyledArticleContentWrapper>

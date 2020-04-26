@@ -1,8 +1,9 @@
 import React from "react";
 import { FirstHeader } from "./FirstHeader/FirstHeader";
 import { SecondHeader } from "./SecondHeader/SecondHeader";
+import { HeaderProps } from "../../../shared/types";
 
-export const Header = (props) => {
+export const Header = (props: HeaderProps) => {
   return (
     <React.Fragment>
       <FirstHeader />

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import {
   fetchArticleById,
   addImage,
   fetchAllImages,
-  editArticleTitle
+  editArticleTitle,
 } from "../../api";
 import {
   StyledArticleEditorWrapper,
@@ -15,32 +15,33 @@ import {
   StyledImageUrl,
   StyledEditorFunctionsBlock,
   StyledFunctionsIcon,
-  StyledImageFormWrapper
+  StyledImageFormWrapper,
 } from "./styles";
 import {
   StyledArticleContentWrapper,
-  StyledArticleContentText
+  StyledArticleContentText,
 } from "../article/styles";
 import "./styles.css";
 import TextareaAutosize from "react-autosize-textarea";
 import ReactMarkdown from "react-markdown/with-html";
 import { editArticleContent } from "../../api";
+import { DBArticle, DBArticleImage, LoadedImage } from "../../shared/types";
 
-export const ArticleEditor = props => {
+export const ArticleEditor = (props: any) => {
   const articleId = Number(props.match.params.id);
-  const [article, setArticle] = useState();
-  const [articleImages, setArticleImages] = useState([]);
+  const [article, setArticle] = useState<DBArticle>();
+  const [articleImages, setArticleImages] = useState<Array<DBArticleImage>>([]);
 
   useEffect(() => {
-    fetchArticleById(articleId).then(article => {
+    fetchArticleById(articleId).then((article) => {
       setArticle(article);
       setText(article.content);
       setTitle(article.title);
     });
-    fetchAllImages().then(images => {
+    fetchAllImages().then((images) => {
       const imagesWithKeys = images
-        .filter(image => image.article === articleId)
-        .map(image => ({ ...image, key: image.id }));
+        .filter((image: DBArticleImage) => image.article === articleId)
+        .map((image: DBArticleImage) => ({ ...image, key: image.id }));
       setArticleImages(imagesWithKeys);
     });
   }, []);
@@ -52,37 +53,38 @@ export const ArticleEditor = props => {
   const [highlightedElement, setHighlightedElement] = useState({
     value: "",
     start: 0,
-    end: 0
+    end: 0,
   });
-  const [loadedImage, setLoadedImage] = useState({
-    article: null,
-    image_file: null
-  });
+  const [loadedImage, setLoadedImage] = useState<LoadedImage>();
 
-  let textAreaRef = React.createRef();
+  let textAreaRef = React.createRef<HTMLTextAreaElement>();
 
   const svgIcons = importAll(
     require.context("../../assets/svg/editor", false, /\.(svg)$/)
   );
 
-  function importAll(r) {
+  function importAll(r: any) {
     return r.keys().map(r);
   }
 
-  function handleContentChange(newText) {
+  function handleContentChange(newText: string) {
     setText(newText);
   }
 
-  function handleTitleChange(newTitle) {
+  function handleTitleChange(newTitle: string) {
     setTitle(newTitle);
   }
 
   function saveChanges() {
-    if (article.content !== text) {
-      editArticleContent(article, text);
-    }
-    if (article.title !== title) {
-      editArticleTitle(article, title);
+    if (article) {
+      if (article.content !== text) {
+        editArticleContent(article, text);
+      }
+      if (article.title !== title) {
+        editArticleTitle(article, title);
+      }
+    } else {
+      console.log("Error: article is undefined!");
     }
   }
 
@@ -95,39 +97,49 @@ export const ArticleEditor = props => {
           textArea.selectionEnd
         ),
         start: textArea.selectionStart,
-        end: textArea.selectionEnd
+        end: textArea.selectionEnd,
       });
     }
   }
 
-  function addTag(startingTag, endingTag) {
+  function addTag(startingTag: string, endingTag: string) {
     if (highlightedElement !== null) {
       setText(
         [
           text.slice(0, highlightedElement.start),
           `${startingTag}${highlightedElement.value}${endingTag}`,
-          text.slice(highlightedElement.end)
+          text.slice(highlightedElement.end),
         ].join("")
       );
     }
   }
 
-  function handleImageChange(event) {
+  function handleImageChange(event: ChangeEvent<HTMLInputElement>) {
     if (event.target) {
-      setLoadedImage({
-        article: article.id,
-        image_file: event.target.files[0]
-      });
+      if (!article) {
+        console.log("Error: article is undefined!");
+      } else if (!event.target.files) {
+        console.log("Error: event.target.files is null!");
+      } else {
+        setLoadedImage({
+          article: article.id,
+          image_file: event.target.files[0],
+        });
+      }
     }
   }
 
-  function handleImageUpload(event) {
+  function handleImageUpload(event: React.FormEvent) {
     if (event.target) {
       event.preventDefault();
-      let formData = new FormData();
-      formData.append("article", loadedImage.article);
-      formData.append("image_file", loadedImage.image_file);
-      addImage(formData);
+      if (loadedImage) {
+        let formData = new FormData();
+        formData.append("article", loadedImage.article.toString());
+        formData.append("image_file", loadedImage.image_file);
+        addImage(formData);
+      } else {
+        console.log("Error: loadedImage is undefined!");
+      }
     }
   }
 
@@ -192,7 +204,7 @@ export const ArticleEditor = props => {
         <React.Fragment>
           <StyledImageUrlListWrapper>
             <StyledImageUrlList>
-              {articleImages.map(image => (
+              {articleImages.map((image) => (
                 <StyledImageUrl
                   src={`${image.image_file.replace("media", "static")}`}
                   onClick={() => {
@@ -212,15 +224,13 @@ export const ArticleEditor = props => {
           <StyledImageFormWrapper>
             <form
               encType="multipart/form-data"
-              onSubmit={event => handleImageUpload(event)}
+              onSubmit={(event) => handleImageUpload(event)}
             >
               <input
                 type="file"
                 accept=".png, .jpg, .jpeg"
-                onChange={event => handleImageChange(event)}
-              >
-                {/* <img src={svgIcons[7]} /> */}
-              </input>
+                onChange={(event) => handleImageChange(event)}
+              />
               <input type="submit" />
             </form>
           </StyledImageFormWrapper>
@@ -230,19 +240,23 @@ export const ArticleEditor = props => {
         <StyledArticleEditorWrapper>
           <TextareaAutosize
             className="editing-text editing-title"
-            onChange={event => handleTitleChange(event.target.value)}
+            onChange={(event) =>
+              handleTitleChange((event.target as HTMLTextAreaElement).value)
+            }
             value={title}
           />
           <TextareaAutosize
             className="editing-text"
-            onChange={event => handleContentChange(event.target.value)}
+            onChange={(event) =>
+              handleContentChange((event.target as HTMLTextAreaElement).value)
+            }
             value={text}
             onMouseUp={() => updateHighlightedElement()}
             ref={textAreaRef}
           />
         </StyledArticleEditorWrapper>
       ) : (
-        <StyledArticleContentWrapper editor>
+        <StyledArticleContentWrapper editor={true}>
           <p className="editing-text editing-title">{title}</p>
           <StyledArticleContentText>
             <ReactMarkdown source={text} escapeHtml={false} />

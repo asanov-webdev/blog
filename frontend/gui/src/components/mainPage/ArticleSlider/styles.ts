@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledArticleSlideImgProps } from "../../../shared/types";
 
 export const StyledArticleSlide = styled.div`
   background: #fff;
@@ -12,7 +13,8 @@ export const StyledArticleSlide = styled.div`
 export const StyledArticleSlideImg = styled.img`
   height: 500px;
   border-radius: 25px;
-  filter: ${(props) => `brightness(${props.brightness}%)`};
+  filter: ${(props: StyledArticleSlideImgProps) =>
+    `brightness(${props.brightness}%)`};
 `;
 
 export const StyledArticleSlideTheme = styled.p`
