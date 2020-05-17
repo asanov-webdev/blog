@@ -26,11 +26,14 @@ import TextareaAutosize from "react-autosize-textarea";
 import ReactMarkdown from "react-markdown/with-html";
 import { editArticleContent } from "../../api";
 import { DBArticle, DBArticleImage, LoadedImage } from "../../shared/types";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchImagesAction } from "../../actions";
 
 export const ArticleEditor = (props: any) => {
   const articleId = Number(props.match.params.id);
   const [article, setArticle] = useState<DBArticle>();
-  const [articleImages, setArticleImages] = useState<Array<DBArticleImage>>([]);
+  const dispatch = useDispatch();
+  const images = useSelector((state) => state.entity.images);
 
   useEffect(() => {
     fetchArticleById(articleId).then((article) => {
@@ -42,7 +45,7 @@ export const ArticleEditor = (props: any) => {
       const imagesWithKeys = images
         .filter((image: DBArticleImage) => image.article === articleId)
         .map((image: DBArticleImage) => ({ ...image, key: image.id }));
-      setArticleImages(imagesWithKeys);
+      dispatch(fetchImagesAction(imagesWithKeys));
     });
   }, []);
 
@@ -143,7 +146,7 @@ export const ArticleEditor = (props: any) => {
     }
   }
 
-  if (articleImages.length === 0 || article === undefined) {
+  if (images.length === 0 || article === undefined) {
     return <p>loading..</p>;
   }
 
@@ -204,18 +207,16 @@ export const ArticleEditor = (props: any) => {
         <React.Fragment>
           <StyledImageUrlListWrapper>
             <StyledImageUrlList>
-              {articleImages.map((image) => (
+              {images.map((image) => (
                 <StyledImageUrl
                   src={`${image.image_file.replace("media", "static")}`}
                   onClick={() => {
-                    console.log("you clicked");
                     navigator.clipboard.writeText(
                       `<img className='image-big' src=${image.image_file.replace(
                         "media",
                         "static"
                       )}/>`
                     );
-                    console.log(navigator.clipboard.readText());
                   }}
                 />
               ))}

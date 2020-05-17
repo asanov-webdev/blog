@@ -1,21 +1,21 @@
 import axios from "./axios-config";
 
 export async function fetchArticles() {
-  const data = await axios.get("/articles/").then(response => response.data);
+  const data = await axios.get("/articles/").then((response) => response.data);
   return data;
 }
 
 export async function fetchArticleById(articleId) {
   const data = await axios
     .get(`/articles/${articleId}`)
-    .then(response => response.data);
+    .then((response) => response.data);
   return data;
 }
 
 export async function fetchAllImages() {
   const data = await axios
     .get("/articles/images/")
-    .then(response => response.data);
+    .then((response) => response.data);
   return data;
 }
 
@@ -23,7 +23,7 @@ export async function incrementArticleViews(article) {
   article.views_amount += 1;
   const data = await axios
     .put(`/articles/update/${article.id}`, article)
-    .then(response => response.data);
+    .then((response) => response.data);
   return data;
 }
 
@@ -31,7 +31,7 @@ export async function editArticleContent(article, newContent) {
   article.content = newContent;
   const data = await axios
     .put(`/articles/update/${article.id}`, article)
-    .then(response => response.data);
+    .then((response) => response.data);
   return data;
 }
 
@@ -39,29 +39,31 @@ export async function editArticleTitle(article, newTitle) {
   article.title = newTitle;
   const data = await axios
     .put(`/articles/update/${article.id}`, article)
-    .then(response => response.data);
+    .then((response) => response.data);
   return data;
 }
 
 export async function addImage(formData) {
   const data = await axios
     .post("/articles/images/add", formData, {
-      headers: { "content-type": "multipart/form-data" }
+      headers: { "content-type": "multipart/form-data" },
     })
-    .then(response => response.data);
+    .then((response) => response.data);
   return data;
 }
 
 export async function fetchLatestArticlesPreviews() {
   const articles = await axios
     .get("/articles/")
-    .then(response => response.data.filter(article => article.publish_date));
-  const articleIDs = articles.map(article => article.id);
+    .then((response) =>
+      response.data.filter((article) => article.publish_date)
+    );
+  const articleIDs = articles.map((article) => article.id);
   const mainImages = await axios
     .get("/articles/images/")
-    .then(response =>
+    .then((response) =>
       response.data.filter(
-        image => image.is_main && articleIDs.includes(image.article)
+        (image) => image.is_main && articleIDs.includes(image.article)
       )
     );
   return [articles, mainImages];
