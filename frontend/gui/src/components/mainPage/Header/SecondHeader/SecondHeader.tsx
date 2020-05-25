@@ -26,8 +26,6 @@ export const SecondHeader = (props: SecondHeaderProps) => {
           {themes.map((theme, index) => (
             <StyledTheme
               onClick={() => {
-                console.log(props);
-                console.log(theme.slice(0, 2).toUpperCase());
                 props.callback(theme.slice(0, 2).toUpperCase());
               }}
             >

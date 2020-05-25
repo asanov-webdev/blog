@@ -1,4 +1,4 @@
-export const fetcgArticlesAction = (articles) => ({
+export const fetchArticlesAction = (articles) => ({
   type: "FETCH_ARTICLES",
   payload: {
     articles: articles,
